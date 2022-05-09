@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\**" />
+    <EmbeddedResource Remove="Migrations\**" />
+    <None Remove="Migrations\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Migrations\20211231121538_InitialMigration.cs" />
+    <Compile Include="Migrations\20211231121538_InitialMigration.Designer.cs" />
+    <Compile Include="Migrations\20211231180030_AuthenticationIntegration.cs" />
+    <Compile Include="Migrations\20211231180030_AuthenticationIntegration.Designer.cs" />
+    <Compile Include="Migrations\20220508192542_Hawwadni ha nfhmek.cs" />
+    <Compile Include="Migrations\20220508192542_Hawwadni ha nfhmek.Designer.cs" />
+    <Compile Include="Migrations\20220509160917_funtime.cs" />
+    <Compile Include="Migrations\20220509160917_funtime.Designer.cs" />
+    <Compile Include="Migrations\20220509195659_funtime2.cs" />
+    <Compile Include="Migrations\20220509195659_funtime2.Designer.cs" />
+    <Compile Include="Migrations\FileTransferContextModelSnapshot.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DotNetZip" Version="1.16.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.20" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.20" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.20" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="3.1.20" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1.20" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.20" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.20">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj" />
+  </ItemGroup>
+
+</Project>

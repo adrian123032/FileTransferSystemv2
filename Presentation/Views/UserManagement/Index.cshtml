@@ -1,0 +1,22 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@model Application.ViewModels.UserManagementIndexViewModel
+
+<table>
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.Users)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => user.Email)</td>
+                <td>@Html.DisplayFor(modelItem => user.PhoneNumber)</td>
+                <td><a asp-controller="UserManagement" asp-action="AddRole" asp-route-id="@user.Id">Add Role</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

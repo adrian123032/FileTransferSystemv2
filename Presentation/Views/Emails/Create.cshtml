@@ -1,0 +1,65 @@
+﻿
+@{ ViewData["Title"] = "Create"; }
+
+@if (ViewBag.Error != null)
+{
+<div class="alert alert-danger" role="alert">
+    @ViewBag.Error
+</div>}
+
+@if (ViewBag.Message != null)
+{
+<div class="alert alert-primary" role="alert">
+    @ViewBag.Message
+</div>}
+
+
+<form method="post" action="/Emails/Create" enctype="multipart/form-data">
+    <table class="mx-auto mt-5">
+        <tr>
+            <td>To:<span style="color:#ff0000">*</span></td>
+            <td>
+                <input type="email" name="toEmail" class="form-control" />
+            </td>
+        </tr>
+        <tr>
+            <td>From:<span style="color:#ff0000">*</span></td>
+            <td>
+                <input type="email" name="fromEmail" class="form-control" value="nickbgmt@gmail.com" />
+            </td>
+        </tr>
+        <tr>
+            <td>Title:<span style="color:#ff0000">*</span></td>
+            <td>
+                <input type="text" name="title" class="form-control" />
+            </td>
+        </tr>
+        <tr>
+            <td>Message:</td>
+            <td>
+                <textarea name="message" rows="8" cols="70" class="form-control"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td>
+                <input type="text" name="password" class="form-control" />
+            </td>
+        </tr>
+        <tr>
+            <td>Upload file(s):<span style="color:#ff0000">*</span></td>
+            <td><input type="file" name="file" /> </td>
+        </tr>
+        <tr>
+            <td>File Expiry Date:<span style="color:#ff0000">*</span></td>
+            <td><input type="date" name="fileExpiry" /> </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" style="width: 100%;" class="btn btn-primary" value="Get a link">
+            </td>
+        </tr>
+
+    </table>
+</form>

@@ -1,0 +1,10 @@
+﻿@model Application.ViewModels.UserManagementAddRoleViewModel
+<h3>Add Role for @Model.Email</h3>
+<form asp-controller="UserManagement" asp.acton="AddRole">
+    <input asp-for="UserId " type="hidden"/>
+    <select asp-for="NewRole">
+        <option value="User">User</option>
+        <option value="Admin">Admin</option>
+    </select>
+    <input type="submit" value="Add Role" />
+</form>

@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Application.ViewModels.EmailViewModel>
+
+@{ ViewData["Title"] = "List"; }
+
+<table class="table text-center">
+    <thead ">
+        <tr>
+            <th>
+                From
+            </th>
+            <th>
+                To
+            </th>
+            <th>
+                Title
+            </th>
+            <th>
+                Message
+            </th>
+            <th>
+                Password
+            </th>
+            <th>
+                File
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+       @foreach (var item in Model)
+       {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FromEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ToEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @if (item.Message == null)
+                {
+                    <p>N/A</p>
+                }
+                else
+                {
+                    @Html.DisplayFor(modelItem => item.Message)
+                }
+            </td>
+            <td>
+                @if (item.Password == null)
+                {
+                    <p>N/A</p>
+                }
+                else
+                {
+                    @Html.DisplayFor(modelItem => item.Password)
+                }
+            </td>
+            <td>
+                <a href="@Html.DisplayFor(modelItem => item.FilePath)" download>
+                    <img src="/files/fileLogo.jpg" alt="file" width="25">
+                </a>
+            </td>
+        </tr>}
+    </tbody>
+</table>
