@@ -17,9 +17,17 @@ namespace Domain.Models
         [Required]
         public string Title { get; set; }
         public string Message { get; set; }
-        public string Password { get; set; }
         [Required]
-        public string FilePath { get; set; }
+        public string Name { get; set; }
+        [MaxLength(100)]
+        public string FileType { get; set; }
+        [MaxLength]
+        public byte[] DataFiles { get; set; }
+        public long fileLength { get; set; }
+
+        [DataType(DataType.DateTime)]
+        [ValidateDate]
         public DateTime FileExpiry { get; set; }
+
     }
 }

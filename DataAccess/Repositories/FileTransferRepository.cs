@@ -25,7 +25,7 @@ namespace DataAccess.Repositories
         public IQueryable<Email> GetFiles(string user)
         {
             var list = from e in context.Emails
-                       where e.ToEmail==user || e.FromEmail == user
+                       where e.ToEmail==user || e.FromEmail == user ||e.ToEmail.Contains(user+",") || e.ToEmail.Contains(","+user) || e.ToEmail.Contains(", " + user)
                        select e;
             return list;
         }

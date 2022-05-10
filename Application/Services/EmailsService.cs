@@ -25,8 +25,11 @@ namespace Application.Services
                 FromEmail = model.FromEmail,
                 Title = model.Title,
                 Message = model.Message,
-                Password = model.Password,
-                FilePath = model.FilePath
+                Name = model.Name,
+                FileType = model.FileType,
+                fileLength = model.fileLength,
+                DataFiles = model.DataFiles,
+                FileExpiry = model.FileExpiry
             });
         }
 
@@ -41,8 +44,11 @@ namespace Application.Services
                            ToEmail = e.ToEmail,
                            Title = e.Title,
                            Message = e.Message,
-                           Password = e.Password,
-                           FilePath = e.FilePath
+                           Name = e.Name,
+                           FileType = e.FileType,
+                           fileLength = e.fileLength,
+                           DataFiles = e.DataFiles,
+                           FileExpiry = e.FileExpiry
                        };
             return list;
         }

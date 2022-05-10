@@ -4,14 +4,16 @@ using DataAccess.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(FileTransferContext))]
-    partial class FileTransferContextModelSnapshot : ModelSnapshot
+    [Migration("20220510164206_Upload to db")]
+    partial class Uploadtodb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,6 +27,9 @@ namespace DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime?>("CreatedOn")
+                        .HasColumnType("datetime2");
 
                     b.Property<byte[]>("DataFiles")
                         .HasColumnType("varbinary(max)");
@@ -47,6 +52,9 @@ namespace DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -54,9 +62,6 @@ namespace DataAccess.Migrations
                     b.Property<string>("ToEmail")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<long>("fileLength")
-                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 

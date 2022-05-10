@@ -18,9 +18,6 @@
                 Message
             </th>
             <th>
-                Password
-            </th>
-            <th>
                 File
             </th>
         </tr>
@@ -49,19 +46,9 @@
                 }
             </td>
             <td>
-                @if (item.Password == null)
-                {
-                    <p>N/A</p>
-                }
-                else
-                {
-                    @Html.DisplayFor(modelItem => item.Password)
-                }
-            </td>
-            <td>
-                <a href="@Html.DisplayFor(modelItem => item.FilePath)" download>
+                <button  asp-route-returnUrl="@Url.Action("Emails", "Download", new { area = ""})">
                     <img src="/files/fileLogo.jpg" alt="file" width="25">
-                </a>
+                </button>
             </td>
         </tr>}
     </tbody>

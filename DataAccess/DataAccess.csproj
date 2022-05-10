@@ -21,6 +21,12 @@
     <Compile Include="Migrations\20220509160917_funtime.Designer.cs" />
     <Compile Include="Migrations\20220509195659_funtime2.cs" />
     <Compile Include="Migrations\20220509195659_funtime2.Designer.cs" />
+    <Compile Include="Migrations\20220510133225_Date.cs" />
+    <Compile Include="Migrations\20220510133225_Date.Designer.cs" />
+    <Compile Include="Migrations\20220510164206_Upload to db.cs" />
+    <Compile Include="Migrations\20220510164206_Upload to db.Designer.cs" />
+    <Compile Include="Migrations\20220510181147_Update Email.cs" />
+    <Compile Include="Migrations\20220510181147_Update Email.Designer.cs" />
     <Compile Include="Migrations\FileTransferContextModelSnapshot.cs" />
   </ItemGroup>
 

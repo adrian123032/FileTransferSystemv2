@@ -4,14 +4,16 @@ using DataAccess.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(FileTransferContext))]
-    partial class FileTransferContextModelSnapshot : ModelSnapshot
+    [Migration("20220510133225_Date")]
+    partial class Date
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,15 +28,12 @@ namespace DataAccess.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<byte[]>("DataFiles")
-                        .HasColumnType("varbinary(max)");
-
                     b.Property<DateTime>("FileExpiry")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("FileType")
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100);
+                    b.Property<string>("FilePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FromEmail")
                         .IsRequired()
@@ -43,8 +42,7 @@ namespace DataAccess.Migrations
                     b.Property<string>("Message")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
+                    b.Property<string>("Password")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
@@ -54,9 +52,6 @@ namespace DataAccess.Migrations
                     b.Property<string>("ToEmail")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<long>("fileLength")
-                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
