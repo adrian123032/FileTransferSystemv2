@@ -12,6 +12,8 @@ namespace Domain.Interfaces
         public void AddEmail(Email b);
         public IQueryable<Email> GetFiles(string user);
 
+        public IQueryable<Email> GetFileByName(string fileName);
+
 
     }
 }

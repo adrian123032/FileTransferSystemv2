@@ -46,9 +46,9 @@
                 }
             </td>
             <td>
-                <button  asp-route-returnUrl="@Url.Action("Emails", "Download", new { area = ""})">
+                <a href='@Url.Action("Download", "Emails", new { name = item.Name})'>
                     <img src="/files/fileLogo.jpg" alt="file" width="25">
-                </button>
+                </a>
             </td>
         </tr>}
     </tbody>

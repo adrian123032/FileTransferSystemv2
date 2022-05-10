@@ -53,5 +53,25 @@ namespace Application.Services
             return list;
         }
 
+        public IQueryable<EmailViewModel> GetFileByName(string fileName)
+        {
+            var list = from e in emailsRepo.GetFileByName(fileName)
+                       orderby e.Id ascending
+                       select new EmailViewModel()
+                       {
+                           Id = e.Id,
+                           FromEmail = e.FromEmail,
+                           ToEmail = e.ToEmail,
+                           Title = e.Title,
+                           Message = e.Message,
+                           Name = e.Name,
+                           FileType = e.FileType,
+                           fileLength = e.fileLength,
+                           DataFiles = e.DataFiles,
+                           FileExpiry = e.FileExpiry
+                       };
+            return list;
+        }
+
     }
 }

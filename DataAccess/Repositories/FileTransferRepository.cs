@@ -30,6 +30,14 @@ namespace DataAccess.Repositories
             return list;
         }
 
+        public IQueryable<Email> GetFileByName(string fileName)
+        {
+            var list = from e in context.Emails
+                       where e.Name == fileName
+                       select e;
+            return list;
+        }
+
 
     }
 }

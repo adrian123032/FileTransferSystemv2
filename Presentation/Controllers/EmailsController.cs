@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using Application.Interfaces;
 using Application.ViewModels;
@@ -40,6 +41,54 @@ namespace Presentation.Controllers
             return View(list);
         }
 
+        
+        public async Task<IActionResult> Download(string name)
+        {
+            var list = emailsService.GetFileByName(name).FirstOrDefault();
+            if (list == null)
+            {
+
+                return RedirectToAction("List");
+            }
+            else if((list.FileExpiry != new DateTime(0001, 01, 01, 00, 00, 00))&& list.FileExpiry < DateTime.Today)
+            {
+                return RedirectToAction("Expired");
+            }
+            else if(list.FromEmail == @User.Identity.Name || list.ToEmail.Contains(@User.Identity.Name + ",") || list.ToEmail.Contains("," + @User.Identity.Name) || list.ToEmail.Contains(", " + @User.Identity.Name) )
+            {
+                byte[] byteArr = list.DataFiles;
+                return new FileContentResult(byteArr, list.FileType)
+                {
+                    FileDownloadName = list.Name
+                };
+            }
+            else
+            {
+                return RedirectToAction("List");
+            }
+        }
+
+        public IActionResult Expired()
+        {
+            return View();
+        }
+
+
+
+        //[HttpGet]
+        //public IActionResult Download(string name)
+        //{
+        //    var list = emailsService.GetFileByName(name);
+        //    DownloadFile(list);
+        //    return View();
+        //}
+
+        //public FileResult DownloadFile(EmailViewModel model)
+        //{
+        //    byte[] byteArr = model.DataFiles;
+        //    return File(model.FirstOrDefault().DataFiles, model.FirstOrDefault().FileType);
+        //}
+
 
         [HttpPost]
         public IActionResult Create(AddEmailViewModel model, IFormFile file)
@@ -74,15 +123,13 @@ namespace Presentation.Controllers
 
                     if (file.Length > 0)
                     {
-                        //Getting file Extension
-                        var fileExtension = Path.GetExtension(file.FileName);
                         // concatenating  FileName + FileExtension
                         var newFileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
 
 
 
                         model.Name = newFileName;
-                        model.FileType = fileExtension;
+                        model.FileType = file.ContentType;
                         model.fileLength = file.Length;
 
                         using (var target = new MemoryStream())

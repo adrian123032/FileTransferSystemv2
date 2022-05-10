@@ -10,6 +10,7 @@ namespace Application.Interfaces
     {
         public void AddEmail(AddEmailViewModel model);
         public IQueryable<EmailViewModel> GetFiles(string user);
+        public IQueryable<EmailViewModel> GetFileByName(string fileName);
 
 
     }
